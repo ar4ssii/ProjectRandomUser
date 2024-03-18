@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'RANDOM_API.dart';
+import 'package:project_random_user/Model/RandomUser.dart';
+import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -8,12 +13,39 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 class _HomepageState extends State<Homepage> {
+  Future<void> getData() async{
+    final response = await http.get(
+        Uri.parse(url)
+    );
+    setState(() {
+      user = [jsonDecode(response.body)];
+    });
+
+    // example on how you can get data in random user api
+    //1st declare a variable find in /Model/RandomUser
+    //2nd to assign that variable a data call the Class RandomUser()
+    //e.x you want to get a name in the data declare a variable name which this variable is already initialized in the /Model/RandomUser
+    //next to get a name in the json data call RandomUser.getName(IN THIS PARAMETER YOU PUT 'user' which is in the setState above)
+    //now if you want to get age just call RandomUser.getAge() different func can be found in /Model/RandomUser
+    name = RandomUser.getName(user);
+    //add here
+
+    print(name);
+    await Future.delayed(Duration(seconds: 2));
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xFFE7E7E7),
 
-        body: Center(
+        body: RefreshIndicator(
             child: ListView(
               children: [
                 Column(
@@ -37,7 +69,7 @@ class _HomepageState extends State<Homepage> {
                           Icon(FontAwesomeIcons.solidCircleUser,size: 200,color: Colors.white, ),
                           // ClipOval(child:Image.network("https://th.bing.com/th/id/OIP.E4pqV9Hsj-U6WNsJFMrzbQHaHa?rs=1&pid=ImgDetMain", height: 200,)),
                           SizedBox(height: 30,),
-                          Text('Anna', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),)
+                          Text('Lorem Ipsum', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),)
                         ],
                       ),
                     ),
@@ -60,11 +92,6 @@ class _HomepageState extends State<Homepage> {
                               Text('female'),
                             ],
                           ),
-                          Divider(
-                            height: 20,
-                            thickness: 0.5,
-                            color: Colors.grey,
-                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -72,11 +99,6 @@ class _HomepageState extends State<Homepage> {
                               Icon(FontAwesomeIcons.locationPin, color: Colors.red[800],),
                               Text('Philippines'),
                             ],
-                          ),
-                          Divider(
-                            height: 20,
-                            thickness: 0.5,
-                            color: Colors.grey,
                           ),
                           SizedBox(height: 10,),
                           Row(
@@ -86,11 +108,6 @@ class _HomepageState extends State<Homepage> {
                               Text('anna@gmail.com.ph.gov'),
                             ],
                           ),
-                          Divider(
-                            height: 20,
-                            thickness: 0.5,
-                            color: Colors.grey,
-                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,11 +116,6 @@ class _HomepageState extends State<Homepage> {
                               Text('@anna'),
                             ],
                           ),
-                          Divider(
-                            height: 20,
-                            thickness: 0.5,
-                            color: Colors.grey,
-                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,11 +123,6 @@ class _HomepageState extends State<Homepage> {
                               Icon(FontAwesomeIcons.calendar, color: Colors.blue[800],),
                               Text('11'),
                             ],
-                          ),
-                          Divider(
-                            height: 20,
-                            thickness: 0.5,
-                            color: Colors.grey,
                           ),
                           SizedBox(height: 10,),
                           Row(
@@ -134,7 +141,7 @@ class _HomepageState extends State<Homepage> {
                 )
               ],
             ),
-        ),
+        onRefresh: getData),
     );
   }
 }

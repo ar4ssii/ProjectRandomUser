@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-// import 'variable.dart';
+import 'RANDOM_API.dart';
 import 'homepage.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,6 +9,7 @@ void main()=> runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
   home: Loading(),
 ));
+
 class Loading extends StatefulWidget {
   const Loading({super.key});
 
@@ -16,17 +18,40 @@ class Loading extends StatefulWidget {
   @override
   State<Loading> createState() => _LoadingState();
 }
-class _LoadingState extends State<Loading> {
-  @override
-  void initState() {
-    super.initState();
 
-    Timer(Duration(seconds: 5), () {
+class _LoadingState extends State<Loading> {
+  Future<void> getData() async{
+    try{
+      final response = await http.get(
+        Uri.parse(url)
+      ).timeout(Duration(seconds: 5));
+      user = [jsonDecode(response.body)];
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (BuildContext context) => Homepage()),
       );
-    });
+    }
+    catch(e)
+    {
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: Text('Message'),
+          content: Text('No Internet Connection'),
+          actions: [
+            TextButton(onPressed: (){
+              getData();
+              Navigator.pop(context);
+            }, child: Text('Retry'))
+          ],
+        );
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
   }
 
   @override
@@ -62,7 +87,6 @@ class _LoadingState extends State<Loading> {
 
     );
   }
-  
 }
 
 
