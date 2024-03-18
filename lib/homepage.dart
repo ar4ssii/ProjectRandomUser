@@ -60,6 +60,11 @@ class _HomepageState extends State<Homepage> {
                               Text('female'),
                             ],
                           ),
+                          Divider(
+                            height: 20,
+                            thickness: 0.5,
+                            color: Colors.grey,
+                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,6 +72,11 @@ class _HomepageState extends State<Homepage> {
                               Icon(FontAwesomeIcons.locationPin, color: Colors.red[800],),
                               Text('Philippines'),
                             ],
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 0.5,
+                            color: Colors.grey,
                           ),
                           SizedBox(height: 10,),
                           Row(
@@ -76,6 +86,11 @@ class _HomepageState extends State<Homepage> {
                               Text('anna@gmail.com.ph.gov'),
                             ],
                           ),
+                          Divider(
+                            height: 20,
+                            thickness: 0.5,
+                            color: Colors.grey,
+                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,6 +99,11 @@ class _HomepageState extends State<Homepage> {
                               Text('@anna'),
                             ],
                           ),
+                          Divider(
+                            height: 20,
+                            thickness: 0.5,
+                            color: Colors.grey,
+                          ),
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,6 +111,11 @@ class _HomepageState extends State<Homepage> {
                               Icon(FontAwesomeIcons.calendar, color: Colors.blue[800],),
                               Text('11'),
                             ],
+                          ),
+                          Divider(
+                            height: 20,
+                            thickness: 0.5,
+                            color: Colors.grey,
                           ),
                           SizedBox(height: 10,),
                           Row(
