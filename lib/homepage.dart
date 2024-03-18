@@ -11,31 +11,33 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFF7F7F7),
-        appBar: AppBar(
-          backgroundColor: Colors.grey[300],
-          title: Text('Home'),
-          centerTitle: true,
-        ),
+        backgroundColor: const Color(0xFFE7E7E7),
+
         body: Center(
             child: ListView(
               children: [
                 Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(20),
+                      padding:EdgeInsets.symmetric(vertical:30),
                       width: double.maxFinite,
                       decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color(0xFFDBA4E2),
+                            Color(0xFFc252eb)
+                          ],
+                        ),
                       ),
                       child: Column(
                         children: [
-                          ClipOval(child:Image.network("https://th.bing.com/th/id/OIP.E4pqV9Hsj-U6WNsJFMrzbQHaHa?rs=1&pid=ImgDetMain")),
-                          SizedBox(height: 20,),
-                          Text('Anna', style: TextStyle(fontWeight: FontWeight.bold),)
+                          // this icon is a filler or a default
+                          Icon(FontAwesomeIcons.solidCircleUser,size: 200,color: Colors.white, ),
+                          // ClipOval(child:Image.network("https://th.bing.com/th/id/OIP.E4pqV9Hsj-U6WNsJFMrzbQHaHa?rs=1&pid=ImgDetMain", height: 200,)),
+                          SizedBox(height: 30,),
+                          Text('Anna', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),)
                         ],
                       ),
                     ),
@@ -74,7 +76,6 @@ class _HomepageState extends State<Homepage> {
                               Text('anna@gmail.com.ph.gov'),
                             ],
                           ),
-
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +84,6 @@ class _HomepageState extends State<Homepage> {
                               Text('@anna'),
                             ],
                           ),
-
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,7 +92,6 @@ class _HomepageState extends State<Homepage> {
                               Text('11'),
                             ],
                           ),
-
                           SizedBox(height: 10,),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
