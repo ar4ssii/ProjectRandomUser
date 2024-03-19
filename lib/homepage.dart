@@ -41,7 +41,7 @@ class _HomepageState extends State<Homepage> {
     country = RandomUser.getCountry(user);
     email=RandomUser.getEmail(user);
     phoneNumber = RandomUser.getPhoneNumber(user);
-    username = RandomUser.getPhoneNumber(user);
+    username = RandomUser.getUsername(user);
     profile=RandomUser.getProfile(user);
     print(name);
     await Future.delayed(Duration(seconds: 2));

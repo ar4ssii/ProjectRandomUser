@@ -23,7 +23,7 @@ class _LoadingState extends State<Loading> {
   Future<void> getData() async{
     try{
       final response = await http.get(
-        Uri.parse(url)
+          Uri.parse(url)
       ).timeout(Duration(seconds: 5));
       user = [jsonDecode(response.body)];
       Navigator.pushReplacement(
@@ -88,5 +88,4 @@ class _LoadingState extends State<Loading> {
     );
   }
 }
-
 
