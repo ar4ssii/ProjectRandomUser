@@ -101,6 +101,11 @@ class _HomepageState extends State<Homepage> {
                           Text(gender ?? ''),
                         ],
                       ),
+                      Divider(
+                        height: 20,
+                        thickness: 0.5,
+                        color: Colors.grey,
+                      ),
                       SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,6 +113,11 @@ class _HomepageState extends State<Homepage> {
                           Icon(FontAwesomeIcons.locationPin, color: Colors.red[800],),
                           Text(country ?? ''),
                         ],
+                      ),
+                      Divider(
+                        height: 20,
+                        thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(height: 10,),
                       Row(
@@ -117,6 +127,11 @@ class _HomepageState extends State<Homepage> {
                           Text(email ?? ''),
                         ],
                       ),
+                      Divider(
+                        height: 20,
+                        thickness: 0.5,
+                        color: Colors.grey,
+                      ),
                       SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,6 +140,11 @@ class _HomepageState extends State<Homepage> {
                           Text(username ?? ''),
                         ],
                       ),
+                      Divider(
+                        height: 20,
+                        thickness: 0.5,
+                        color: Colors.grey,
+                      ),
                       SizedBox(height: 10,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,6 +152,11 @@ class _HomepageState extends State<Homepage> {
                           Icon(FontAwesomeIcons.calendar, color: Colors.blue[800],),
                           Text(age ?? ''),
                         ],
+                      ),
+                      Divider(
+                        height: 20,
+                        thickness: 0.5,
+                        color: Colors.grey,
                       ),
                       SizedBox(height: 10,),
                       Row(
