@@ -38,4 +38,7 @@ class RandomUser{
   static String getUsername(user){
     return user[0]['results'][0]['login']['username'];
   }
+  static String getProfile(user){
+    return user[0]['results'][0]['picture']['large'];
+  }
 }
