@@ -56,6 +56,12 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFE7E7E7),
+      appBar: AppBar(
+        title: Text('Profile',style: TextStyle(fontFamily:'Jacques'),),
+        backgroundColor: const Color(0xFFE7E7E7),
+        centerTitle: true,
+
+      ),
       body: RefreshIndicator(
         onRefresh: getData,
         child: ListView(
@@ -79,7 +85,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       ClipOval(child: Image.network("$profile"),),
                       SizedBox(height: 30,),
-                      Text(name ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),)
+                      Text(name ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20,fontFamily: 'Jacques'),)
                     ],
                   ),
                 ),
