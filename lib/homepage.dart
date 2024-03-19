@@ -12,6 +12,14 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
+String? name = 'Lorem Ipsum';
+String? gender = 'female';
+String? country = 'Philippines';
+String? email = 'anna@gmail.com.ph.gov';
+String? age = '11';
+String? phoneNumber = '09471026008';
+String? username = '@anna';
+String? profile;
 class _HomepageState extends State<Homepage> {
   Future<void> getData() async{
     final response = await http.get(
@@ -28,8 +36,13 @@ class _HomepageState extends State<Homepage> {
     //next to get a name in the json data call RandomUser.getName(IN THIS PARAMETER YOU PUT 'user' which is in the setState above)
     //now if you want to get age just call RandomUser.getAge() different func can be found in /Model/RandomUser
     name = RandomUser.getName(user);
-    //add here
-
+    age = RandomUser.getAge(user);
+    gender = RandomUser.getGender(user);
+    country = RandomUser.getCountry(user);
+    email=RandomUser.getEmail(user);
+    phoneNumber = RandomUser.getPhoneNumber(user);
+    username = RandomUser.getPhoneNumber(user);
+    profile=RandomUser.getProfile(user);
     print(name);
     await Future.delayed(Duration(seconds: 2));
   }
@@ -39,110 +52,103 @@ class _HomepageState extends State<Homepage> {
     getData();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFE7E7E7),
-
-        body: RefreshIndicator(
-            child: ListView(
+      backgroundColor: const Color(0xFFE7E7E7),
+      body: RefreshIndicator(
+        onRefresh: getData,
+        child: ListView(
+          children: [
+            Column(
               children: [
-                Column(
-                  children: [
-                    Container(
-                      padding:EdgeInsets.symmetric(vertical:30),
-                      width: double.maxFinite,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color(0xFFDBA4E2),
-                            Color(0xFFc252eb)
-                          ],
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          // this icon is a filler or a default
-                          Icon(FontAwesomeIcons.solidCircleUser,size: 200,color: Colors.white, ),
-                          // ClipOval(child:Image.network("https://th.bing.com/th/id/OIP.E4pqV9Hsj-U6WNsJFMrzbQHaHa?rs=1&pid=ImgDetMain", height: 200,)),
-                          SizedBox(height: 30,),
-                          Text('Lorem Ipsum', style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),)
-                        ],
-                      ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 30),
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFFDBA4E2),
+                        Color(0xFFc252eb)
+                      ],
                     ),
-                    //data of the user
-
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      padding: EdgeInsets.all(20),
-                      width: double.maxFinite,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: Column(
+                  ),
+                  child: Column(
+                    children: [
+                      ClipOval(child: Image.network("$profile"),),
+                      SizedBox(height: 30,),
+                      Text(name ?? '', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20),)
+                    ],
+                  ),
+                ),
+                // Data of the user
+                Container(
+                  margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.venus, color: Colors.pink,),
-                              Text('female'),
-                            ],
-                          ),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.locationPin, color: Colors.red[800],),
-                              Text('Philippines'),
-                            ],
-                          ),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.at, color: Colors.yellow[800],),
-                              Text('anna@gmail.com.ph.gov'),
-                            ],
-                          ),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.user, color: Colors.green[800],),
-                              Text('@anna'),
-                            ],
-                          ),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.calendar, color: Colors.blue[800],),
-                              Text('11'),
-                            ],
-                          ),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(FontAwesomeIcons.mobile, color: Colors.purple[800],),
-                              Text('09471026008'),
-                            ],
-                          ),
+                          Icon(FontAwesomeIcons.venus, color: Colors.pink,),
+                          Text(gender ?? ''),
                         ],
                       ),
-                    )
-
-
-                  ],
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(FontAwesomeIcons.locationPin, color: Colors.red[800],),
+                          Text(country ?? ''),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(FontAwesomeIcons.at, color: Colors.yellow[800],),
+                          Text(email ?? ''),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(FontAwesomeIcons.user, color: Colors.green[800],),
+                          Text(username ?? ''),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(FontAwesomeIcons.calendar, color: Colors.blue[800],),
+                          Text(age ?? ''),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(FontAwesomeIcons.mobile, color: Colors.purple[800],),
+                          Text(phoneNumber ?? ''),
+                        ],
+                      ),
+                    ],
+                  ),
                 )
               ],
-            ),
-        onRefresh: getData),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
-
