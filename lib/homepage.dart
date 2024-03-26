@@ -12,13 +12,13 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
-String? name = 'Lorem Ipsum';
-String? gender = 'female';
-String? country = 'Philippines';
-String? email = 'anna@gmail.com.ph.gov';
-String? age = '11';
-String? phoneNumber = '09471026008';
-String? username = '@anna';
+String? name;
+String? gender;
+String? country;
+String? email;
+String? age;
+String? phoneNumber;
+String? username;
 String? profile;
 class _HomepageState extends State<Homepage> {
   Future<void> getData() async{
@@ -29,12 +29,6 @@ class _HomepageState extends State<Homepage> {
       user = [jsonDecode(response.body)];
     });
 
-    // example on how you can get data in random user api
-    //1st declare a variable find in /Model/RandomUser
-    //2nd to assign that variable a data call the Class RandomUser()
-    //e.x you want to get a name in the data declare a variable name which this variable is already initialized in the /Model/RandomUser
-    //next to get a name in the json data call RandomUser.getName(IN THIS PARAMETER YOU PUT 'user' which is in the setState above)
-    //now if you want to get age just call RandomUser.getAge() different func can be found in /Model/RandomUser
     name = RandomUser.getName(user);
     age = RandomUser.getAge(user);
     gender = RandomUser.getGender(user);
